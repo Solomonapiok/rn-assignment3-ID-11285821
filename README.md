@@ -25,6 +25,7 @@ To use the Task Manager App, follow these steps:
 4.	Run the app on your preferred platform (iOS or Android) using an emulator or a physical device.
 ## Screenshots
 ![alt text](<APP DEV SCREENSHOT.png>)
+![alt text](<Screenshot 2.png>)
 The app's user interface closely follows the provided design, which includes:
 •	A header with the app's title and a "+" button to add new tasks.
 •	A scrollable list of task categories, each with a corresponding icon and task count.
