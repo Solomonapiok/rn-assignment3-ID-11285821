@@ -1,20 +1,122 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, ScrollView, FlatList, StyleSheet, Image } from 'react-native';
+import TaskItem from './components/TaskItem';
+import CategoryItem from './components/CategoryItem';
 
-export default function App() {
+const categories = [
+  { name: 'Exercise', icon: require('./assets/exercise.png') },
+  { name: 'Study', icon: require('./assets/study.png') },
+  { name: 'Code', icon: require('./assets/code.png') },
+  { name: 'Cook', icon: require('./assets/cook.png') },
+  { name: 'Read', icon: require('./assets/read.png') },
+  { name: 'Sleep', icon: require('./assets/sleep.png') },
+  { name: 'Shop', icon: require('./assets/shop.png') },
+  { name: 'Clean', icon: require('./assets/clean.png') }
+];
+
+const initialTasks = [
+  'Finish React Native project', 'Study for exams', 'Complete coding challenge', 
+  'Cook dinner', 'Go for a run', 'Read a book', 'Do laundry', 
+  'Grocery shopping', 'Clean the house', 'Finish reading documentation', 
+  'Practice yoga', 'Prepare presentation', 'Update resume', 
+  'Learn a new recipe', 'Plan weekend trip'
+];
+
+const App = () => {
+  const [tasks, setTasks] = useState(initialTasks);
+  const [newTask, setNewTask] = useState('');
+
+  const addTask = () => {
+    if (newTask) {
+      setTasks([...tasks, newTask]);
+      setNewTask('');
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <ScrollView style={styles.main}>
+<View style={styles.container}>
+      <View>
+        <Text style={styles.heading}>Hello, Devs</Text>
+        <Text>14 tasks today</Text>
+      </View>
+
+      <View style={styles.profile}>
+        <View style={styles.profilepic}>
+          <Image source={require('./assets/person.png')} style={styles.person} />
+        </View>
+      </View>
     </View>
+      <Text style={styles.subtitle}>Categories</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.category1}>
+        {categories.map((category, index) => (
+          <CategoryItem key={index} category={category} />
+        ))}
+      </ScrollView>
+
+      <Text style={styles.subtitle}>Ongoing Tasks</Text>
+      <FlatList
+        data={tasks}
+        renderItem={({ item }) => <TaskItem task={item} />}
+        keyExtractor={(item, index) => index.toString()}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="New Task"
+        value={newTask}
+        onChangeText={setNewTask}
+      />
+      <Button title="Add Task" onPress={addTask} />
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#f7f0e8',
   },
+  container: {
+    flexDirection: 'row',
+    justifyContent:'space-between',
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: -7,
+  },
+  profile: {
+    width: 50,
+    height: 52,
+  },
+  person: {
+    width: 46,
+    height: 45,
+    backgroundColor:'white',
+    borderRadius: 25,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20
+  },
+  category1:{
+    flexDirection: 'row',
+  },
+  input: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10
+  },
+  subtitle: {
+    fontSize: 20,
+    marginTop: 20,
+    marginBottom: 10
+  }
 });
+
+export default App;
