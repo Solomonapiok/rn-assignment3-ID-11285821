@@ -23,7 +23,8 @@ To use the Task Manager App, follow these steps:
 2.	Install the necessary dependencies using npm install or yarn install.
 3.	Start the development server with npm start or yarn start.
 4.	Run the app on your preferred platform (iOS or Android) using an emulator or a physical device.
-Screenshots
+## Screenshots
+![alt text](<APP DEV SCREENSHOT.png>)
 The app's user interface closely follows the provided design, which includes:
 •	A header with the app's title and a "+" button to add new tasks.
 •	A scrollable list of task categories, each with a corresponding icon and task count.
