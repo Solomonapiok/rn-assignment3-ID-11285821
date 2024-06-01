@@ -13,9 +13,16 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc'
+    borderBottomColor: '#ccc',
+    backgroundColor: 'white',
+    marginBottom: 15,
+    borderRadius:14,
   },
   taskText: {
+    width: 354,
+    height: 128,
+    padding: 50,
+    fontWeight: '700',
     fontSize: 16
   }
 });

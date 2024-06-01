@@ -35,18 +35,28 @@ const App = () => {
 
   return (
     <ScrollView style={styles.main}>
-<View style={styles.container}>
+    <View style={styles.container}>
       <View>
         <Text style={styles.heading}>Hello, Devs</Text>
         <Text>14 tasks today</Text>
       </View>
-
       <View style={styles.profile}>
-        <View style={styles.profilepic}>
+        <View>
           <Image source={require('./assets/person.png')} style={styles.person} />
         </View>
       </View>
     </View>
+    <View style={styles.search}>
+      <View style={styles.searchbox}>
+       <View style={styles.search1}>
+          <Image source={require('./assets/Vector.png')} style={styles.searchpic}/>
+          <Text style={styles.searchtext}>Search</Text>
+        </View>
+      </View>
+      <View style={styles.filter}>
+          <Image source={require('./assets/Vector1.png')} style={styles.filterpic}/>
+      </View>
+      </View>
       <Text style={styles.subtitle}>Categories</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.category1}>
         {categories.map((category, index) => (
@@ -100,7 +110,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20
+    marginBottom: 20,
   },
   category1:{
     flexDirection: 'row',
@@ -115,8 +125,51 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 20,
     marginTop: 20,
-    marginBottom: 10
-  }
+    marginBottom: 10,
+    fontWeight: 'bold'
+  },
+  search: {
+    backgroundColor: '#f7f0e8',
+    height: 49,
+    width: 353,
+    marginTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  searchbox: {
+    backgroundColor: 'white',
+    height: 48,
+    width:280,
+    borderRadius: 15,
+  },
+  search1: {
+    marginTop: 24,
+    width: 82,
+    marginTop: 12,
+    marginLeft: 10,
+    flexDirection: 'row',
+  },
+  searchpic: {
+    marginTop: 2.5,
+  },
+  filter: {
+    backgroundColor: '#F0522F',
+    width: 50,
+    height: 48,
+    borderRadius: 14,
+  },
+  filterpic:{
+    width: 28.33,
+    height: 25.5,
+    marginTop: 10,
+    marginLeft: 8.5,
+  },
+  searchtext:{
+    fontSize: 16,
+    marginLeft: 5,
+    fontWeight: '700',
+  },
+
 });
 
 export default App;
